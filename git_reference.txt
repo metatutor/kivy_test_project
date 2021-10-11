@@ -1,0 +1,16 @@
+Commands you should know:
+
+To check the repository for new code (if I made any changes):
+	git pull
+
+To commit any changes you made to files that are currently in the project:
+	git commit -am "insert a message here"
+
+To send those changes you've already committed above to Github:
+	git push
+
+If you ever add any files to the project (for whatever reason):
+	git add <filename>
+
+Confused about what's included in the project?
+	git status
