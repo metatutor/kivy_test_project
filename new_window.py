@@ -31,19 +31,21 @@ sm = ScreenManager()
 class AwesomeApp(App):
     
 
-    def on_press_button(self, instance):
-        global sm
-        if instance.text == options[0]:
-            sm.current = "Calendar"
-        elif instance.text == options[1]:
-            pass
-        elif instance.text == options[2]:
-            pass
-        else: 
-            pass
-
     def build(self):
-        global sm
+        global sm 
+        # this is the call back function that registers the four menu buttons 
+        # also allows on button press to switch windows
+        def on_press_button(instance):
+            global sm 
+            if instance.text == options[0]:
+                sm.current = "calendar"
+            elif instance.text == options[1]:
+                sm.current = "quick log"
+            elif instance.text == options[2]:
+                sm.current = "weekly summary"
+            else: 
+                sm.current = "meditation"
+
         main_layout = BoxLayout(orientation="vertical")
         colors = [red, green, blue, purple]
         top_layout = BoxLayout(orientation="horizontal")
@@ -51,7 +53,7 @@ class AwesomeApp(App):
         for i in range(4):
             in_layout = BoxLayout(orientation="horizontal", padding=button_padding)
             btn = Button(background_color=colors[i],text=options[i])
-
+            btn.bind(on_press=on_press_button)
             in_layout.add_widget(btn) 
             if(i<2):
                 top_layout.add_widget(in_layout)
@@ -62,11 +64,17 @@ class AwesomeApp(App):
 
         screen = Screen(name="main_menu")
         screen_calendar = Screen(name="calendar")
+        screen_log = Screen(name="quick log")
+        screen_summary = Screen(name="weekly summary")
+        screen_meditation = Screen(name="meditation")
 
         screen.add_widget(main_layout)
 
         sm.add_widget(screen)
         sm.add_widget(screen_calendar)
+        sm.add_widget(screen_log)
+        sm.add_widget(screen_summary)
+        sm.add_widget(screen_meditation)
 
         # add for loop for each option later
 
