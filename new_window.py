@@ -26,10 +26,10 @@ purple = [1,0,1,.5]
 button_padding = (100,100)
 options = ["Calendar", "Quick Log","Weekly Summary", "Meditation"]
 
-
+sm = ScreenManager()
 
 class AwesomeApp(App):
-    sm = ScreenManager()
+    
 
     def on_press_button(self, instance):
         global sm
@@ -61,12 +61,12 @@ class AwesomeApp(App):
         main_layout.add_widget(bottom_layout)
 
         screen = Screen(name="main_menu")
-        screen_calendar = screen(name="calendar")
+        screen_calendar = Screen(name="calendar")
 
         screen.add_widget(main_layout)
 
         sm.add_widget(screen)
-        sm.add_Widget(screen_calendar)
+        sm.add_widget(screen_calendar)
 
         # add for loop for each option later
 
