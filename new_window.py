@@ -5,7 +5,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
-
+import calendar_screen
 import random
 
 #convert_color accepts four parameters: (red,green,blue,alpha)
@@ -46,6 +46,7 @@ class AwesomeApp(App):
             else: 
                 sm.current = "meditation"
 
+        # this code defines the actual look of the main menu
         main_layout = BoxLayout(orientation="vertical")
         colors = [red, green, blue, purple]
         top_layout = BoxLayout(orientation="horizontal")
@@ -63,7 +64,8 @@ class AwesomeApp(App):
         main_layout.add_widget(bottom_layout)
 
         screen = Screen(name="main_menu")
-        screen_calendar = Screen(name="calendar")
+        #screen_calendar = Screen(name="calendar")
+        screen_calendar = calendar_screen.getScreen()
         screen_log = Screen(name="quick log")
         screen_summary = Screen(name="weekly summary")
         screen_meditation = Screen(name="meditation")
